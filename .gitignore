@@ -1,0 +1,26 @@
+# Node.js
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn.lock
+
+# Cypress
+cypress/downloads/
+cypress/screenshots/
+cypress/videos/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDEs / editores
+.vscode/
+.idea/
+
+# Archivos temporales
+*.log
+*.tmp
+
+#Temporal
+# Ignorar temporalmente las pruebas
+cypress/e2e/
