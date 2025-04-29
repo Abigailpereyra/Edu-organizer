@@ -20,7 +20,5 @@ Thumbs.db
 # Archivos temporales
 *.log
 *.tmp
-
-#Temporal
-# Ignorar temporalmente las pruebas
-cypress/e2e/
+.env
+*.env.local
