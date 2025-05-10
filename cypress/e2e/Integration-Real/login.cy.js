@@ -1,4 +1,33 @@
 require('cypress-xpath')
+
+describe('Login - Casos reales', () => {
+    beforeEach(() => {
+      cy.visit('/auth/login');
+    });
+  
+    it('debería iniciar sesión con credenciales válidas', () => {
+      cy.get("#\\:r0\\:").type(Cypress.env('VALID_USER'));
+      cy.get("#\\:r1\\:").type(Cypress.env('VALID_PASS'));
+      cy.get('form button').click();
+      cy.url().should('include', '/dashboard');
+    });
+  
+    it('debería mostrar error con contraseña incorrecta', () => {
+      cy.get("#\\:r0\\:").type(Cypress.env('VALID_USER'));
+      cy.get("#\\:r1\\:").type('claveIncorrecta');
+      cy.get('form button').click();
+      cy.xpath('//*[@id="notistack-snackbar"]').should('contain', 'Credenciales inválidas');
+    });
+  
+    it('debería mostrar error con usuario inválido', () => {
+      cy.get("#\\:r0\\:").type('noexiste@mail.com');
+      cy.get("#\\:r1\\:").type('clave123');
+      cy.get('form button').click();
+      cy.xpath('//*[@id="notistack-snackbar"]').should('contain', 'Credenciales inválidas');
+    });
+  });
+  
+
 describe('Login - Pruebas positivas', () => {
     beforeEach(() => {
       cy.visit('/auth/login')
